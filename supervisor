@@ -1,0 +1,12 @@
+#!/bin/bash
+
+pip install supervisor
+
+echo_supervisord_conf > /etc/supervisord.conf
+
+git clone git://gist.github.com/176149.git gist-176149
+cp /etc/init.d/supervisord /etc/init.d/supervisord.bk
+mv gist-176149/supervisord.sh /etc/init.d/supervisord
+rm -rf gist-176149
+chmod 755 /etc/init.d/supervisord
+
